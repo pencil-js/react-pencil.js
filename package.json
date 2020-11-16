@@ -1,0 +1,38 @@
+{
+    "name": "react-pencil.js",
+    "version": "0.0.0",
+    "description": "Pencil.js ❤️ React - Build reactive 2D graphics scene in your React project",
+    "main": "src/index.js",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "unpkg": "dist/main.js",
+    "jsdelivr": "dist/main.js",
+    "scripts": {
+        "build": "node build.js",
+        "web": "webpack --mode=production",
+        "prepublishOnly": "npm run build && npm run dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pencil-js/react-pencil.js.git"
+    },
+    "author": "GMartigny",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/pencil-js/react-pencil.js/issues"
+    },
+    "homepage": "https://github.com/pencil-js/react-pencil.js#readme",
+    "peerDependencies": {
+        "pencil.js": "^1.18.0",
+        "react": ">=17.0.0"
+    },
+    "devDependencies": {
+        "@gmartigny/eslint-config": "^1.6.0",
+        "delete": "^1.1.0",
+        "eslint": "^7.13.0",
+        "webpack": "^5.4.0",
+        "webpack-cli": "^4.2.0"
+    }
+}
