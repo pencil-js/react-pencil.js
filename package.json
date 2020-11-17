@@ -25,7 +25,7 @@
     },
     "homepage": "https://github.com/pencil-js/react-pencil.js#readme",
     "peerDependencies": {
-        "pencil.js": "^1.18.0",
+        "pencil.js": ">=1.12.0",
         "react": ">=17.0.0"
     },
     "devDependencies": {
