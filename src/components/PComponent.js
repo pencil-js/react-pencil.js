@@ -1,6 +1,6 @@
-import PContainer from "./PContainer";
+import Container from "./Container";
 
-export default (Pencil) => class PComponent extends PContainer(Pencil) {
+export default class PComponent extends Container {
     getInstance () {
         throw new Error("Component should not be directly instantiate.")
     }

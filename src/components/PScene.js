@@ -1,19 +1,18 @@
-import PContainer from "./PContainer";
+import SuperContainer from "./Container";
 import React from "react";
 
-export default (Pencil) => class PScene extends PContainer(Pencil) {
+export default ({ Scene, Container }) => class PScene extends SuperContainer {
     constructor (props) {
         super(props);
-        this.canvas = React.createRef();
+        this.spy = React.createRef();
     }
 
     getInstance () {
-        const { parentNode } = this.canvas.current;
-        return new Pencil.Scene(parentNode, this.props.options);
+        return new Scene(this.spy.current.parentNode, this.props.options);
     }
 
     UNSAFE_componentWillMount () {
-        this.$pencil = new Pencil.Container();
+        this.$pencil = new Container();
     }
 
     componentDidMount () {
@@ -25,11 +24,12 @@ export default (Pencil) => class PScene extends PContainer(Pencil) {
 
     componentWillUnmount () {
         this.$pencil.stopLoop();
+        super.componentWillUnmount();
     }
 
     render () {
-        return <div ref={this.canvas}>
+        return <div ref={this.spy} className="pencil.js-spy" style={{display: "none"}}>
             {this.renderChildren()}
         </div>;
     }
-}
+};

@@ -3,12 +3,12 @@ const { promise: clean } = require("delete");
 
 const component = (classe, props) => `import PComponent from "../PComponent";
 
-export default (Pencil) => class P${classe} extends PComponent(Pencil) {
+export default ({ ${classe} }) => class P${classe} extends PComponent {
     getInstance () {
         const {
             ${["position", ...props, "options"].join(",\n            ")},
         } = this.props;
-        return new Pencil.${classe}(${["position", ...props, "options"].join(", ")});
+        return new ${classe}(${["position", ...props, "options"].join(", ")});
     }
 }`;
 
