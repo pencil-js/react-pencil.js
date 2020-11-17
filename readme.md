@@ -1,3 +1,5 @@
+![react-pencil.js logo](media/logo.png)
+
 # react-pencil.js
 
 Pencil.js ❤️ React - Build reactive 2D graphics scene in your React project
