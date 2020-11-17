@@ -15,31 +15,37 @@ export default class Container extends React.Component {
         this.$pencil = null;
     }
 
-    listenForEvents (props) {
-        this.$pencil.removeAllListener();
+    listenForEvents (previousProps = {}, props) {
+        const actions = {
+            removeListener: previousProps,
+            on: props,
+        };
 
-        Object.keys(props)
-            .filter(key => key.startsWith("on"))
-            .forEach((key) => {
-                this.$pencil.on(key.slice(2).toLowerCase(), props[key]);
-            });
+        Object.keys(actions).forEach((funcName) => {
+            const object = actions[funcName];
+            Object.keys(object)
+                .filter(key => key.startsWith("on"))
+                .forEach((key) => {
+                    this.$pencil[funcName](key.slice(2).toLowerCase(), object[key]);
+                });
+        });
     }
 
     componentDidMount () {
         if (this.props.attach && this.$pencil) {
             this.props.attach(this.$pencil);
-            this.listenForEvents(this.props);
+            this.listenForEvents(undefined, this.props);
         }
         else {
             throw new Error("Should not happen");
         }
     }
 
-    componentDidUpdate () {
+    componentDidUpdate (prevProps) {
         if (this.$pencil) {
             this.$pencil.position.set(this.props.position);
             this.$pencil.setOptions(this.props.options);
-            this.listenForEvents(this.props);
+            this.listenForEvents(prevProps, this.props);
         }
     }
 
