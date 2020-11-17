@@ -10,6 +10,12 @@ export default ({ ${classe} }) => class P${classe} extends PComponent {
         } = this.props;
         return new ${classe}(${["position", ...props, "options"].join(", ")});
     }
+    componentDidUpdate (...args) {
+        super.componentDidUpdate(...args);
+        ${props.length ? `if (this.$pencil) {
+            ${props.map(prop => `this.$pencil.${prop} = this.props.${prop}`).join(";\n            ")}
+        }` : ""}
+    }
 }`;
 
 const exporter = list => `${list.map((classe) => `import P${classe} from "./P${classe}"`).join(";\n")}

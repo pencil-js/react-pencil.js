@@ -15,23 +15,32 @@ export default class Container extends React.Component {
         this.$pencil = null;
     }
 
+    listenForEvents (props) {
+        this.$pencil.removeAllListener();
+
+        Object.keys(props)
+            .filter(key => key.startsWith("on"))
+            .forEach((key) => {
+                this.$pencil.on(key.slice(2).toLowerCase(), props[key]);
+            });
+    }
+
     componentDidMount () {
         if (this.props.attach && this.$pencil) {
             this.props.attach(this.$pencil);
+            this.listenForEvents(this.props);
         }
         else {
             throw new Error("Should not happen");
         }
-
-        Object.keys(this.props)
-            .filter(key => key.startsWith("on"))
-            .forEach((key) => {
-                this.$pencil.on(key.slice(2).toLowerCase(), this.props[key]);
-            });
     }
 
-    componentDidUpdate (prevProps, prevState, snapshot) {
-        console.log("Update", this.constructor.name, this.props, prevProps);
+    componentDidUpdate () {
+        if (this.$pencil) {
+            this.$pencil.position.set(this.props.position);
+            this.$pencil.setOptions(this.props.options);
+            this.listenForEvents(this.props);
+        }
     }
 
     renderChildren () {
