@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-Pencil.js exemple</title>
+    <style>
+        html, body, #app {
+            margin: 0;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- React and ReactDOM script tag-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Pencil.js script tag-->
+    <script src="https://unpkg.com/pencil.js"></script>
+    <!-- react-pencil.js script tag-->
+    <script src="https://unpkg.com/react-pencil.js"></script>
+    <script>
+        const { PScene, PStar } = ReactPencil;
+
+        function App () {
+            const sceneOptions = {
+                fill: "#73e0fa",
+            };
+            const starsOptions = {
+                fill: "#fa134f",
+                shadow: {
+                    position: [5, 5],
+                    blur: 10,
+                    color: "#000",
+                },
+            };
+
+            const scene = React.createRef();
+            const [positions, setPos] = React.useState([...new Array(30)]);
+
+            const stars = positions.map((_, i) => React.createElement(PStar, {
+                position: positions[i],
+                radius: 100,
+                options: {
+                    rotation: Math.random(),
+                    ...starsOptions,
+                },
+                draggable: true,
+                onClick: () => console.log(`Clicked on star n${i}`),
+            }));
+
+            React.useEffect(() => {
+                setPos(positions.map(() => scene.current.$pencil.getRandomPosition()));
+            }, []);
+
+            return React.createElement(PScene, {
+                ref: scene,
+                options: sceneOptions,
+            }, ...stars);
+        }
+
+        ReactDOM.render(
+            React.createElement(App),
+            document.getElementById("app"),
+        );
+    </script>
+</body>
+</html>

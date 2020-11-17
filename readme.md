@@ -14,7 +14,7 @@ Pencil.js ❤️ React - Build reactive 2D graphics scene in your React project
 
 ## Usage
 
-### NPM
+### 1. NPM
 
 You will need a compiler (webpack, rollup ...) configured with Babel to bundle it.
 
@@ -38,7 +38,7 @@ ReactDOM.render(
 ```
 
 
-### Direct `<script>` tag
+### 2. Direct `<script>` tag
 
 ```html
 <!DOCTYPE html>
