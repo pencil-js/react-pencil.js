@@ -1,8 +1,9 @@
 import PScene from "./PScene";
 import PContainer from "./PContainer";
+import components from "./factory";
 
-export {
+export default {
+    ...components,
     PScene,
     PContainer,
 };
-export * from "./generated";

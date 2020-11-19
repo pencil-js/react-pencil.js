@@ -1,4 +1,4 @@
-import * as componentsDefinition from "./components";
+import componentsDefinition from "./components";
 
 export default (Pencil) => {
     const components = {};

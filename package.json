@@ -10,9 +10,9 @@
     "unpkg": "dist/main.js",
     "jsdelivr": "dist/main.js",
     "scripts": {
-        "build": "node build.js",
-        "web": "webpack --mode=production",
-        "prepublishOnly": "npm run build && npm run web"
+        "build": "webpack --mode=production",
+        "dev": "webpack --mode=development --watch",
+        "prepublishOnly": "npm run build"
     },
     "repository": {
         "type": "git",
