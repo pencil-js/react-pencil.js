@@ -37,7 +37,7 @@ Object.keys(map).forEach((className) => {
         componentDidUpdate (...args) {
             super.componentDidUpdate(...args);
             if (this.$pencil) {
-                map[className].forEach((p) => this.$pencil[p] = this.props[p]);
+                map[className].forEach(p => this.$pencil[p] = this.props[p]);
             }
         }
     };

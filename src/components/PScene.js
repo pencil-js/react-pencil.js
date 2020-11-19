@@ -1,5 +1,5 @@
-import SuperContainer from "./Container";
 import React from "react";
+import SuperContainer from "./Container";
 
 const mirroredProps = ["cursorPosition", "fps", "width", "height", "center", "size"];
 const mirroredFunctions = ["setImageSmoothing", "getRandomPosition", "getImageData", "toImage"];
@@ -36,7 +36,7 @@ export default ({ Scene, Container }) => {
                 {this.renderChildren()}
             </div>;
         }
-    }
+    };
 
     mirroredProps.forEach((prop) => {
         Object.defineProperty(PScene.prototype, prop, {
@@ -45,7 +45,7 @@ export default ({ Scene, Container }) => {
             },
             set (value) {
                 this.$pencil[prop] = value;
-            }
+            },
         });
     });
     mirroredFunctions.forEach((funcName) => {

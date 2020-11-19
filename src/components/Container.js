@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default class Container extends React.Component {
     attach (ref) {
@@ -54,7 +55,7 @@ export default class Container extends React.Component {
             const props = {
                 attach: this.attach.bind(this),
             };
-            return React.Children.map(this.props.children, child => {
+            return React.Children.map(this.props.children, (child) => {
                 if (React.isValidElement(child)) {
                     return React.cloneElement(child, props);
                 }
@@ -68,4 +69,15 @@ export default class Container extends React.Component {
     render () {
         return this.renderChildren();
     }
+}
+
+Container.propTypes = {
+    position: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.number),
+        PropTypes.shape({
+            x: PropTypes.number,
+            y: PropTypes.number,
+        }),
+    ]),
+    options: PropTypes.object,
 };

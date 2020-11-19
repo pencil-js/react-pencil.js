@@ -18,4 +18,3 @@ if (errors.length) {
 else {
     global.ReactPencil = install(global.Pencil);
 }
-

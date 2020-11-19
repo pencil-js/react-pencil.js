@@ -2,7 +2,7 @@ import Container from "./Container";
 
 export default class PComponent extends Container {
     getInstance () {
-        throw new Error("Component should not be directly instantiate.")
+        throw new Error("Component should not be directly instantiate.");
     }
 
     componentDidMount () {
