@@ -28,11 +28,12 @@ const map = {
 const classes = {};
 Object.keys(map).forEach((className) => {
     const pName = `P${className}`;
-    classes[pName] = (Pencil) => class extends PComponent {
+    classes[pName] = Pencil => class extends PComponent {
         getInstance () {
             const props = ["position", ...map[className], "options"].map(p => this.props[p]);
             return new Pencil[className](...props);
         }
+
         componentDidUpdate (...args) {
             super.componentDidUpdate(...args);
             if (this.$pencil) {

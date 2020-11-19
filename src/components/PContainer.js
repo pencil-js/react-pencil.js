@@ -8,4 +8,4 @@ export default ({ Container }) => class PContainer extends SuperContainer {
         } = this.props;
         return new Container(position, options);
     }
-}
+};

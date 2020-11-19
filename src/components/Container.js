@@ -44,7 +44,7 @@ export default class Container extends React.Component {
     componentDidUpdate (prevProps) {
         if (this.$pencil) {
             this.$pencil.position.set(this.props.position);
-            this.$pencil.setOptions(this.props.options);
+            this.$pencil.setOptions(this.props.options || {});
             this.listenForEvents(prevProps, this.props);
         }
     }
