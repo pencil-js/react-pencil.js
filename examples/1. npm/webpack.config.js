@@ -1,7 +1,9 @@
+// Webpack configuration
 module.exports = {
     module: {
         rules: [
             {
+                // Redirect all .js file to babel
                 test: /\.js$/,
                 use: {
                     loader: "babel-loader",
@@ -14,4 +16,4 @@ module.exports = {
             },
         ],
     },
-}
+};

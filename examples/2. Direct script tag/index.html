@@ -22,10 +22,13 @@
     <script>
         const { PScene, PStar } = ReactPencil;
 
+        // Main function
         function App () {
+            // Options for the scene
             const sceneOptions = {
                 fill: "#73e0fa",
             };
+            // Shared options for the stars
             const starsOptions = {
                 fill: "#fa134f",
                 shadow: {
@@ -35,30 +38,37 @@
                 },
             };
 
+            // Create a ref for later use
             const scene = React.createRef();
+            // Create a state (empty array) to edit it later
             const [positions, setPos] = React.useState([...new Array(30)]);
 
+            // Create all stars
             const stars = positions.map((_, i) => React.createElement(PStar, {
-                position: positions[i],
+                position: positions[i], // Use the state position
                 radius: 100,
                 options: {
-                    rotation: Math.random(),
-                    ...starsOptions,
+                    rotation: Math.random(), // Random rotation
+                    ...starsOptions, // Common options
                 },
-                draggable: true,
-                onClick: () => console.log(`Clicked on star n${i}`),
+                draggable: true, // Enable draggable
+                onClick: () => console.log(`Clicked on star n${i}`), // Event listener
             }));
 
+            // Will be triggered when references are ready
             React.useEffect(() => {
-                setPos(positions.map(() => scene.current.$pencil.getRandomPosition()));
+                // Update position using the scene reference
+                setPos(positions.map(() => scene.current.getRandomPosition()));
             }, []);
 
+            // Create the scene with stars as children
             return React.createElement(PScene, {
                 ref: scene,
                 options: sceneOptions,
             }, ...stars);
         }
 
+        // Render the main function
         ReactDOM.render(
             React.createElement(App),
             document.getElementById("app"),

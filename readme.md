@@ -9,14 +9,14 @@ Pencil.js ❤️ React - Build reactive 2D graphics scene in your React project
 
     npm install react-pencil.js
 
-> You need to install [`react`](https://github.com/facebook/react) and [`pencil.js`](https://github.com/pencil-js/pencil.js) yourself alongside `react-pencil.js`.
+> You need to install [`react`](https://github.com/facebook/react) (certainly with [`react-dom`](https://github.com/facebook/react/tree/master/packages/react-dom)) and [`pencil.js`](https://github.com/pencil-js/pencil.js) yourself alongside `react-pencil.js`.
 
 
 ## Usage
 
-### 1. NPM
+### 1. NPM (recommended)
 
-You will need a compiler (webpack, rollup ...) configured with Babel to bundle it.
+You will need a compiler (webpack, rollup ...) configured with Babel to bundle it. Look at [the example](./examples/1.%20npm) to know how.
 
 ```js
 import React from "react";
@@ -39,6 +39,8 @@ ReactDOM.render(
 
 
 ### 2. Direct `<script>` tag
+
+For prototyping or when you don't have access to NPM. Look at [the example](./examples/2.%20Direct%20script%20tag) for a slightly more in-depth demo.
 
 ```html
 <!DOCTYPE html>
