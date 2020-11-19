@@ -24,6 +24,9 @@
         "url": "https://github.com/pencil-js/react-pencil.js/issues"
     },
     "homepage": "https://github.com/pencil-js/react-pencil.js#readme",
+    "eslintConfig": {
+        "extends": "@gmartigny/eslint-config"
+    },
     "peerDependencies": {
         "pencil.js": ">=1.12.0",
         "react": ">=17.0.0"
