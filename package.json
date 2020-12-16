@@ -1,6 +1,6 @@
 {
     "name": "react-pencil.js",
-    "version": "0.3.0",
+    "version": "1.0.0",
     "description": "Pencil.js ❤️ React - Build reactive 2D graphics scene in your React project",
     "keywords": [
         "plugin",
